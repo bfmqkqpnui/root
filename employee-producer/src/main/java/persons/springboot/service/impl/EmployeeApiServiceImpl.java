@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service(value = "EmployeeApiService")
@@ -65,6 +66,39 @@ public class EmployeeApiServiceImpl implements EmployeeApiService {
             }
             dto.setSuccess(true);
             dto.setResCode("200");
+        }
+
+        return dto;
+    }
+
+    @Override
+    public ReturnDTO queryEmps(Long pageNum, Long pageSize) {
+        ReturnDTO dto = new ReturnDTO();
+        dto.setSuccess(false);
+        if(null != pageNum && null != pageSize){
+            pageNum = (pageNum.longValue() - 1) * pageSize.longValue();
+
+            List<Employee> employee = employeeApiMapper.queryList(pageNum,pageSize);
+            if (null != employee && employee.size() > 0) {
+                dto.setSuccess(true);
+                dto.setResCode("200");
+                try {
+                    List<EmpVo> empVos = new ArrayList<EmpVo>();
+                    for(Employee emp : employee){
+                        if(null != emp){
+                            EmpVo empVo = JsonUtils.jsonString2Bean(JsonUtils.object2JsonString(emp),EmpVo.class);
+                            if (null != empVo) {
+                                empVos.add(empVo);
+                            }
+                        }
+                    }
+                    if(null != empVos && empVos.size() > 0){
+                        dto.setObj(empVos);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         return dto;

@@ -6,7 +6,7 @@
     <artifactId>root</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>employee-api</module>
+        <module>employee-producer</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -10,4 +10,6 @@ public interface EmployeeApiService {
     ReturnDTO findEmpById(Long id);
 
     ReturnDTO addEmps(List<Employee> emps);
+
+    ReturnDTO queryEmps(Long pageNum,Long pageSize);
 }

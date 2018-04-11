@@ -11,7 +11,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="employee-api" target="1.8" />
       <module name="employee-producer" target="1.8" />
       <module name="root" target="1.5" />
     </bytecodeTargetLevel>
