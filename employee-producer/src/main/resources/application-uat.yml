@@ -2,7 +2,7 @@ server:
     port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/dev?characterEncoding=utf8
+    url: jdbc:mysql://47.96.101.31:3306/dev?characterEncoding=utf8
     username: root
     password: lujieYifei27446~
     driver-class-name: com.mysql.jdbc.Driver
