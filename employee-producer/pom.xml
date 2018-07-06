@@ -19,6 +19,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- netty组件 -->
@@ -95,6 +96,13 @@
                 <configuration>
                     <mainClass>persons.springboot.EmployeeProviderApplication</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <!-- 配置java版本 不配置的话默认父类配置的是1.6-->
