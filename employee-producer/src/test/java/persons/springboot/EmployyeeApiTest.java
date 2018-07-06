@@ -1,6 +1,7 @@
 package persons.springboot;
 
 import junit.framework.TestCase;
+import org.apache.commons.codec.binary.Base64;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,6 @@ import persons.springboot.controller.EmployeeApiController;
 import persons.springboot.entity.Employee;
 import persons.springboot.service.EmployeeApiService;
 import persons.springboot.utils.JsonUtils;
-import persons.springboot.vo.EmpVo;
 import persons.springboot.vo.ReturnDTO;
 
 import java.math.BigDecimal;
@@ -108,7 +108,7 @@ public class EmployyeeApiTest {
     @Test
     public void dataInit() {
         List<Employee> users = new ArrayList<Employee>();
-        for (int i = 1; i <= 500; i++) {
+        for (int i = 1; i <= 5000; i++) {
             Employee user = new Employee();
             user.setUser_Id(UUID.randomUUID().toString().replaceAll("-", ""));
             user.setUser_Name(getName());
@@ -295,5 +295,23 @@ public class EmployyeeApiTest {
         a.roll(Calendar.DATE, -1);//日期回滚一天，也就是最后一天
         int maxDate = a.get(Calendar.DATE);
         return maxDate;
+    }
+
+    @Test
+    public void base(){
+        String mock = "{\"success\": true,\"msg\": null,\"resCode\": \"00100000\",\"obj\": {\"member_token\": \"58a4e7ad10a6515a5b13d9c8191807716025623626adb36fdf0ab5141f1077e6\",\"expire_in\": \"2400\",\"member_id\": \"100000002720802\"}}";
+        /*try {
+            byte[] arr = Base64.encodeBase64(mock.getBytes());
+            String a = String.valueOf(arr);
+            System.out.println(a);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        long beginTime = System.currentTimeMillis();
+        String aaa="{'resourceIds':'7250','resourceIds':'7250','resourceIds':'7250','resourceIds':'7250','resourceIds':'7250','resourceIds':'7250'}"+" "+beginTime;
+        String basejiami=new String(Base64.encodeBase64(aaa.getBytes()));
+        System.out.println("basejiami>>>"+basejiami+">>>>"+basejiami.length());
+
     }
 }

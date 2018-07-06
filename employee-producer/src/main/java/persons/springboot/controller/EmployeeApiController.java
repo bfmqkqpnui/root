@@ -22,7 +22,6 @@ public class EmployeeApiController {
     @GetMapping(value = "/emp/queryById/{id}")
     public ReturnDTO findEmployeeById(@PathVariable("id") Long id) {
         ReturnDTO dto = new ReturnDTO();
-        dto.setSuccess(false);
         try {
             dto = employeeApiService.findEmpById(id);
         } catch (Exception e) {
@@ -32,16 +31,15 @@ public class EmployeeApiController {
     }
 
     @PostMapping(value = "/emp/queryList")
-    public ReturnDTO queryList(@RequestBody Map<String,Object> params){
+    public ReturnDTO queryList(@RequestBody Map<String, Object> params) {
         logger.info(JsonUtils.object2JsonString(params));
         ReturnDTO dto = new ReturnDTO();
-        dto.setSuccess(false);
-        if(CommonUtils.isExist(params)){
+        if (CommonUtils.isExist(params)) {
             String pageNum = params.get("pageNum") == null ? "" : params.get("pageNum").toString();
             String pageSize = params.get("pageSize") == null ? "" : params.get("pageSize").toString();
 
             try {
-                dto = employeeApiService.queryEmps(Long.valueOf(pageNum),Long.valueOf(pageSize));
+                dto = employeeApiService.queryEmps(Long.valueOf(pageNum), Long.valueOf(pageSize));
             } catch (Exception e) {
                 logger.error("查询失败:", e);
             }

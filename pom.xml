@@ -35,6 +35,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>1.5.8.RELEASE</version>
+    </parent>
+
     <build>
         <finalName>root</finalName>
         <plugins>

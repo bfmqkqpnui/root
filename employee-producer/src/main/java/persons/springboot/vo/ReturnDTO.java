@@ -11,10 +11,6 @@ public class ReturnDTO implements Serializable {
      */
     private String resCode;
     /**
-     * 返回状态
-     */
-    private boolean success;
-    /**
      * 接口返回成功的实体类
      */
     private Object obj;
@@ -31,13 +27,6 @@ public class ReturnDTO implements Serializable {
         this.resCode = resCode;
     }
 
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
 
     public Object getObj() {
         return obj;
@@ -59,7 +48,6 @@ public class ReturnDTO implements Serializable {
     public String toString() {
         return "ReturnDTO{" +
                 "resCode='" + resCode + '\'' +
-                ", success=" + success +
                 ", obj=" + obj +
                 ", errMsg='" + errMsg + '\'' +
                 '}';
